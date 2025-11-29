@@ -48,7 +48,7 @@ function isLoggedIn() {
 
 function requireLogin() {
     if (!isLoggedIn()) {
-        header('Location: /src/views/auth/login.php');
+        header('Location: /login');
         exit();
     }
 }

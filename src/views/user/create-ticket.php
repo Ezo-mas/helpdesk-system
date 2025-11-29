@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$_SESSION['user_id'], $title, $description, $priority]);
             
             setMessage('Užklausa sėkmingai pateikta!', 'success');
-            redirect('/src/views/user/my-tickets.php');
+            redirect('/user/my-tickets');
         } catch (PDOException $e) {
             $error = 'Klaida kuriant užklausą. Bandykite vėliau.';
             if (APP_DEBUG) {
@@ -87,7 +87,7 @@ include __DIR__ . '/../layouts/header.php';
             
             <div style="display: flex; gap: 10px;">
                 <button type="submit" class="btn btn-primary">Pateikti užklausą</button>
-                <a href="/src/views/user/my-tickets.php" class="btn btn-secondary">Atšaukti</a>
+                <a href="/user/my-tickets" class="btn btn-secondary">Atšaukti</a>
             </div>
         </form>
     </div>

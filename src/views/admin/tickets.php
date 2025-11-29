@@ -66,7 +66,7 @@ include __DIR__ . '/../layouts/header.php';
                         <td><?php echo $ticket['staff_name'] ? escape($ticket['staff_name']) : '<span style="color:#e67e22;">Nepriskirta</span>'; ?></td>
                         <td><?php echo date('Y-m-d H:i', strtotime($ticket['created_at'])); ?></td>
                         <td>
-                            <a href="/src/views/admin/edit-ticket.php?id=<?php echo $ticket['id']; ?>" 
+                            <a href="/admin/edit-ticket?id=<?php echo $ticket['id']; ?>" 
                                class="btn btn-sm btn-info">Valdyti</a>
                         </td>
                     </tr>

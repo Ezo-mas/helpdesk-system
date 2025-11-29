@@ -54,7 +54,7 @@ if (isLoggedIn() && hasRole(ROLE_ADMIN)) {
     }
     
     if ($requestUri === '/admin/tickets' || $requestUri === '/src/views/admin/tickets.php') {
-        require __DIR__ . '/../src/views/staff/tickets.php';
+        require __DIR__ . '/../src/views/admin/tickets.php';
         exit;
     }
     

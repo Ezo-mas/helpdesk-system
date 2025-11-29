@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_role'])) {
             setMessage('Klaida keičiant rolę', 'danger');
         }
     }
-    redirect('/src/views/admin/users.php');
+    redirect('/admin/users');
 }
 
 // Get all users

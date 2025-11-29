@@ -26,11 +26,11 @@ try {
     
     if (!$ticket) {
         setMessage('Užklausa nerasta arba neturite teisės ją peržiūrėti', 'danger');
-        redirect('/src/views/staff/tickets.php');
+        redirect('/staff/tickets');
     }
 } catch (PDOException $e) {
     setMessage('Klaida gaunant užklausą', 'danger');
-    redirect('/src/views/staff/tickets.php');
+    redirect('/staff/tickets');
 }
 
 // Get comments
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_status'])) {
             $stmt->execute([$new_status, $ticket_id]);
             
             setMessage('Būsena pakeista', 'success');
-            redirect('/src/views/staff/view-ticket.php?id=' . $ticket_id);
+            redirect('/staff/ticket/' . $ticket_id);
         } catch (PDOException $e) {
             $error = 'Klaida keičiant būseną';
         }
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_comment'])) {
             $stmt->execute([$ticket_id, $_SESSION['user_id'], $comment, $is_internal]);
             
             setMessage('Komentaras pridėtas', 'success');
-            redirect('/src/views/staff/view-ticket.php?id=' . $ticket_id);
+            redirect('/staff/view-ticket?id=' . $ticket_id);
         } catch (PDOException $e) {
             $error = 'Klaida pridedant komentarą';
         }
@@ -206,7 +206,7 @@ include __DIR__ . '/../layouts/header.php';
         </div>
     </div>
     
-    <a href="/src/views/staff/tickets.php" class="btn btn-secondary">← Grįžti į sąrašą</a>
+    <a href="/staff/tickets" class="btn btn-secondary">← Grįžti į sąrašą</a>
 </div>
 
 <?php include __DIR__ . '/../layouts/footer.php'; ?>

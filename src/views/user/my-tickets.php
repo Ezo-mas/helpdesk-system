@@ -33,14 +33,14 @@ include __DIR__ . '/../layouts/header.php';
     <div class="card">
         <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
             <h2>Mano užklausos</h2>
-            <a href="/src/views/user/create-ticket.php" class="btn btn-primary">+ Nauja užklausa</a>
+            <a href="/user/create-ticket" class="btn btn-primary">+ Nauja užklausa</a>
         </div>
         
         <?php if (empty($tickets)): ?>
             <div class="empty-state">
                 <h3>Jūs dar neturite užklausų</h3>
                 <p>Sukurkite naują užklausą paspaudę mygtuką viršuje</p>
-                <a href="/src/views/user/create-ticket.php" class="btn btn-primary">Sukurti užklausą</a>
+                <a href="/user/create-ticket" class="btn btn-primary">Sukurti užklausą</a>
             </div>
         <?php else: ?>
             <table class="table">
@@ -77,7 +77,7 @@ include __DIR__ . '/../layouts/header.php';
                             <td><?php echo $ticket['staff_name'] ? escape($ticket['staff_name']) : 'Nepriskirta'; ?></td>
                             <td><?php echo date('Y-m-d H:i', strtotime($ticket['created_at'])); ?></td>
                             <td>
-                                <a href="/src/views/user/view-ticket.php?id=<?php echo $ticket['id']; ?>" 
+                                <a href="/user/view-ticket?id=<?php echo $ticket['id']; ?>" 
                                    class="btn btn-sm btn-info">Peržiūrėti</a>
                             </td>
                         </tr>

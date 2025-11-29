@@ -138,7 +138,7 @@ include __DIR__ . '/../layouts/header.php';
                             </td>
                             <td><?php echo date('Y-m-d H:i', strtotime($ticket['created_at'])); ?></td>
                             <td>
-                                <a href="/src/views/staff/view-ticket.php?id=<?php echo $ticket['id']; ?>" 
+                                <a href="/staff/ticket/<?php echo $ticket['id']; ?>"  
                                    class="btn btn-sm btn-info">Atidaryti</a>
                             </td>
                         </tr>

@@ -25,11 +25,11 @@ try {
     
     if (!$ticket) {
         setMessage('Užklausa nerasta arba neturite teisės ją peržiūrėti', 'danger');
-        redirect('/src/views/user/my-tickets.php');
+        redirect('/user/my-tickets');
     }
 } catch (PDOException $e) {
     setMessage('Klaida gaunant užklausą', 'danger');
-    redirect('/src/views/user/my-tickets.php');
+    redirect('/user/my-tickets');
 }
 
 // Get comments
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_comment'])) {
             $stmt->execute([$ticket_id, $_SESSION['user_id'], $comment]);
             
             setMessage('Komentaras pridėtas', 'success');
-            redirect('/src/views/user/view-ticket.php?id=' . $ticket_id);
+            redirect('/user/ticket/' . $ticket_id);
         } catch (PDOException $e) {
             $error = 'Klaida pridedant komentarą';
         }
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_rating'])) {
             $stmt->execute([$rating, $ticket_id]);
             
             setMessage('Dėkojame už įvertinimą!', 'success');
-            redirect('/src/views/user/view-ticket.php?id=' . $ticket_id);
+            redirect('/user/ticket/' . $ticket_id);
         } catch (PDOException $e) {
             $error = 'Klaida išsaugant įvertinimą';
         }
@@ -203,7 +203,7 @@ include __DIR__ . '/../layouts/header.php';
         <?php endif; ?>
     </div>
     
-    <a href="/src/views/user/my-tickets.php" class="btn btn-secondary">← Grįžti į sąrašą</a>
+    <a href="/user/my-tickets" class="btn btn-secondary">← Grįžti į sąrašą</a>
 </div>
 
 <?php include __DIR__ . '/../layouts/footer.php'; ?>

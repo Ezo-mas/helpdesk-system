@@ -26,11 +26,11 @@ try {
     
     if (!$ticket) {
         setMessage('Užklausa nerasta', 'danger');
-        redirect('/src/views/admin/tickets.php');
+        redirect('/admin/tickets');
     }
 } catch (PDOException $e) {
     setMessage('Klaida gaunant užklausą', 'danger');
-    redirect('/src/views/admin/tickets.php');
+    redirect('/admin/tickets');
 }
 
 // Get all staff members
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['assign_ticket'])) {
         $stmt->execute([$assigned_to, $ticket_id]);
         
         setMessage('Užklausa priskirta', 'success');
-        redirect('/src/views/admin/edit-ticket.php?id=' . $ticket_id);
+        redirect('/admin/edit-ticket?id=' . $ticket_id);
     } catch (PDOException $e) {
         $error = 'Klaida priskiriant užklausą';
     }
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_status'])) {
             $stmt->execute([$new_status, $ticket_id]);
             
             setMessage('Būsena pakeista', 'success');
-            redirect('/src/views/admin/edit-ticket.php?id=' . $ticket_id);
+            redirect('/admin/edit-ticket?id=' . $ticket_id);
         } catch (PDOException $e) {
             $error = 'Klaida keičiant būseną';
         }
@@ -149,7 +149,7 @@ include __DIR__ . '/../layouts/header.php';
         </form>
     </div>
     
-    <a href="/src/views/admin/tickets.php" class="btn btn-secondary">← Grįžti į sąrašą</a>
+    <a href="/admin/tickets" class="btn btn-secondary">← Grįžti į sąrašą</a>
 </div>
 
 <?php include __DIR__ . '/../layouts/footer.php'; ?>

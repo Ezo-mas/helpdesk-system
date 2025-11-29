@@ -84,7 +84,7 @@ include __DIR__ . '/../layouts/header.php';
     <div class="card">
         <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
             <h2>Naujausios užklausos</h2>
-            <a href="/src/views/admin/tickets.php" class="btn btn-primary">Visos užklausos</a>
+            <a href="/admin/tickets" class="btn btn-primary">Visos užklausos</a>
         </div>
         
         <?php if (empty($recent_tickets)): ?>
@@ -128,7 +128,7 @@ include __DIR__ . '/../layouts/header.php';
                             <td><?php echo $ticket['staff_name'] ? escape($ticket['staff_name']) : '<span style="color:#e67e22;">Nepriskirta</span>'; ?></td>
                             <td><?php echo date('Y-m-d H:i', strtotime($ticket['created_at'])); ?></td>
                             <td>
-                                <a href="/src/views/admin/edit-ticket.php?id=<?php echo $ticket['id']; ?>" 
+                                <a href="/admin/edit-ticket?id=<?php echo $ticket['id']; ?>"  
                                    class="btn btn-sm btn-info">Valdyti</a>
                             </td>
                         </tr>
@@ -140,11 +140,11 @@ include __DIR__ . '/../layouts/header.php';
     
     <!-- Quick Links -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
-        <a href="/src/views/admin/users.php" class="card" style="text-decoration: none; color: inherit; text-align: center; padding: 30px;">
+        <a href="/admin/users" class="card" style="text-decoration: none; color: inherit; text-align: center; padding: 30px;">
             <h3>👥 Valdyti vartotojus</h3>
             <p style="color: #7f8c8d;">Peržiūrėti ir redaguoti vartotojų teises</p>
         </a>
-        <a href="/src/views/admin/tickets.php" class="card" style="text-decoration: none; color: inherit; text-align: center; padding: 30px;">
+        <a href="/admin/tickets" class="card" style="text-decoration: none; color: inherit; text-align: center; padding: 30px;">
             <h3>🎫 Visos užklausos</h3>
             <p style="color: #7f8c8d;">Peržiūrėti ir priskirti užklausas</p>
         </a>
