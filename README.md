@@ -64,4 +64,8 @@ The HelpDesk System is a web application designed to facilitate support ticket m
 Contributions are welcome! Please submit a pull request or open an issue for any enhancements or bug fixes.
 
 ## License
+<<<<<<< HEAD
 This project is licensed under the MIT License. See the LICENSE file for details.
+=======
+This project is licensed under the MIT License. See the LICENSE file for details.
+>>>>>>> e4d093afed88afddfc080d25b590a61193038726
