@@ -1,22 +1,44 @@
 FROM php:8.1-fpm
 
-# Install necessary PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    libzip-dev
 
-# Set the working directory
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Set working directory
 WORKDIR /var/www/html
 
-# Copy the application files into the container
-COPY ../public /var/www/html
-COPY ../src /var/www/html/src
-COPY ../composer.json /var/www/html
-COPY ../.env.example /var/www/html
+# Copy composer files
+COPY composer.json ./
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Install PHP dependencies
+RUN composer install --no-scripts --no-autoloader --prefer-dist --ignore-platform-reqs
 
-# Install dependencies
-RUN composer install
+# Copy application files
+COPY . /var/www/html
+
+# Generate autoload files
+RUN composer dump-autoload --optimize
+
+# Set correct permissions - THIS IS THE KEY FIX
+RUN chown -R www-data:www-data /var/www/html \
+    && find /var/www/html -type f -exec chmod 644 {} \; \
+    && find /var/www/html -type d -exec chmod 755 {} \;
 
 # Expose port 9000
 EXPOSE 9000

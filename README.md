@@ -1,71 +1,78 @@
-# HelpDesk System
+# HelpDesk Sistema
 
-## Overview
-The HelpDesk System is a web application designed to facilitate support ticket management for users, support staff, and administrators. It allows users to submit tickets, track their status, and enables support staff to manage and respond to these tickets. Administrators have additional capabilities to manage users and view statistics.
+## Apžvalga
+HelpDesk sistema yra techninės pagalbos užklausų valdymo sistema, skirta vartotojams, pagalbos darbuotojams ir administratoriams. Sistema leidžia vartotojams pateikti užklausas, sekti jų būseną, o pagalbos darbuotojams - valdyti ir spręsti problemas.
 
-## Features
-- User authentication (login and registration)
-- Role-based access control (Administrators, Support Staff, Registered Users)
-- Ticket submission and management
-- Admin dashboard for user and ticket management
-- Responsive design for user interface
+## Funkcijos
+- Vartotojų autentifikacija (prisijungimas ir registracija)
+- Rolėmis pagrįsta prieigos kontrolė (Administratoriai, Pagalbos darbuotojai, Registruoti vartotojai)
+- Užklausų pateikimas ir valdymas
+- Administratoriaus skydelis vartotojų valdymui
+- Komentarų sistema užklausoms
+- Užklausų būsenų valdymas
 
-## Technologies Used
-- PHP
-- MySQL
-- Docker
-- Nginx
+## Vartotojų rolės
+
+### Administratorius
+- Valdo vartotojų teises
+- Mato visas užklausas
+- Gali priskirti užklausas darbuotojams
+
+### Pagalbos darbuotojas
+- Mato jam priskirtas užklausas
+- Gali atsakyti klientui žinute
+- Gali keisti užklausos būseną
+
+### Prisiregistravęs vartotojas
+- Gali pateikti naują užklausą
+- Gali matyti savo pateiktas užklausas ir jų būseną
+- Gali komentuoti ar papildyti savo užklausą
+- Gali vertinti pagalbos kokybę po užklausos uždarymo
+
+## Technologijos
+- PHP 8.1
+- MySQL 8.0
+- Docker & Docker Compose
+- Apache
 - HTML/CSS/JavaScript
 
-## Installation Instructions
+## Instaliavimo instrukcijos
 
-### Prerequisites
-- Docker and Docker Compose installed on your machine.
+### Reikalavimai
+- Docker ir Docker Compose įdiegti jūsų kompiuteryje
 
-### Setup
-1. Clone the repository:
-   ```
-   git clone <repository-url>
+### Diegimas
+1. Klonuokite repozitoriją:
+   ```bash
+   git clone https://github.com/Ezo-mas/helpdesk-system.git
    cd helpdesk-system
    ```
 
-2. Copy the environment file:
-   ```
-   cp .env.example .env
+2. Nukopijuokite aplinkos failą:
+   ```bash
+   copy .env.example .env
    ```
 
-3. Update the `.env` file with your database credentials.
-
-4. Build and run the Docker containers:
-   ```
+3. Paleiskite Docker konteinerius:
+   ```bash
    docker-compose up --build
    ```
 
-5. Initialize the database:
-   - Access the MySQL container:
-     ```
-     docker exec -it <mysql-container-name> bash
-     ```
-   - Run the SQL initialization script:
-     ```
-     mysql -u root -p < /path/to/init.sql
-     ```
+4. Pasiekite sistemą naršyklėje:
+   - Sistema: `http://localhost`
+   - phpMyAdmin: `http://localhost:8080`
 
-6. Access the application:
-   - Open your web browser and navigate to `http://localhost`.
+## Testiniai prisijungimo duomenys
 
-## Usage
-- **User Registration**: New users can register through the registration page.
-- **User Login**: Registered users can log in to submit and track their tickets.
-- **Ticket Management**: Users can create tickets, and support staff can view and manage them.
-- **Admin Dashboard**: Administrators can manage users and view ticket statistics.
+| Rolė | Vartotojo vardas | Slaptažodis |
+|------|------------------|-------------|
+| Administratorius | admin | password123 |
+| Pagalbos darbuotojas | darbuotojas1 | password123 |
+| Pagalbos darbuotojas | darbuotojas2 | password123 |
+| Vartotojas | vartotojas1 | password123 |
+| Vartotojas | vartotojas2 | password123 |
 
-## Contributing
-Contributions are welcome! Please submit a pull request or open an issue for any enhancements or bug fixes.
-
-## License
-<<<<<<< HEAD
-This project is licensed under the MIT License. See the LICENSE file for details.
-=======
-This project is licensed under the MIT License. See the LICENSE file for details.
->>>>>>> e4d093afed88afddfc080d25b590a61193038726
+## Autorius
+Studentas: [Jūsų vardas ir pavardė]
+Kursas: T120B145 IT projektas
+KTU, 2025
