@@ -73,6 +73,6 @@ HelpDesk sistema yra techninės pagalbos užklausų valdymo sistema, skirta vart
 | Vartotojas | vartotojas2 | password123 |
 
 ## Autorius
-Studentas: [Jūsų vardas ir pavardė]
-Kursas: T120B145 IT projektas
+Studentas: Moze Viederis
+Projektas: Kompiuteriu tinklai IT projektas
 KTU, 2025
