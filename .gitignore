@@ -1,0 +1,17 @@
+# Environment files
+.env
+
+# Docker volumes
+/docker/mysql-data/
+
+# IDE files
+.vscode/
+.idea/
+
+# PHP
+vendor/
+composer.lock
+
+# OS files
+.DS_Store
+Thumbs.db
