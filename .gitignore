@@ -1,17 +1,23 @@
+# Dependencies
+/vendor/
+
 # Environment files
 .env
+.env.local
 
 # Docker volumes
-/docker/mysql-data/
+/docker/volumes/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
 
 # IDE files
 .vscode/
 .idea/
 
-# PHP
-vendor/
-composer.lock
-
-# OS files
-.DS_Store
-Thumbs.db
+# Database dumps
+*.sql.backup
