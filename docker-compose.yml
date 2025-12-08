@@ -51,6 +51,21 @@ services:
       - php
     networks:
       - helpdesk-network
+  
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: helpdesk-phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: password
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - helpdesk-network
 
 volumes:
   mysql-data:
